@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Learning Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Base styles */
+        .gradient-bg {
+            background: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+            animation: gradientBG 15s ease infinite;
+            background-size: 400% 400%;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-effect:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #2C5364;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #1E3947;
+        }
+
+        h2 {
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+    <div class="container">
+        <!-- Fact Checking Section -->
+        <div class="glass-effect section">
+            <h2>Fact Checking</h2>
+            <p>Verify your knowledge and understand facts with this interactive section.</p>
+            <a href="#" class="button" onclick="startFactCheck()">Start Fact Check</a>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="glass-effect section">
+            <h2>Quiz</h2>
+            <p>Test your knowledge with our exciting quizzes. Challenge yourself!</p>
+            <a href="#" class="button" onclick="startQuiz()">Take the Quiz</a>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="glass-effect section">
+            <h2>Summary</h2>
+            <p>Review the key points and learnings from today. Stay updated!</p>
+            <a href="#" class="button" onclick="viewSummary()">View Summary</a>
+        </div>
+    </div>
+
+    <script>
+        function startFactCheck() {
+            alert("Fact-checking module will be implemented soon!");
+        }
+
+        function startQuiz() {
+            alert("Quiz module will be implemented soon!");
+        }
+
+        function viewSummary() {
+            alert("Summary module will be implemented soon!");
+        }
+    </script>
+</body>
+</html>

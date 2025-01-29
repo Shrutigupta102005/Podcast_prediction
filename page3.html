@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsightPod - AI-Powered Podcast Platform</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        .gradient-bg {
+            background: linear-gradient(135deg, #0F2027 0%, #203A43 50%, #2C5364 100%);
+            animation: gradientBG 15s ease infinite;
+            background-size: 400% 400%;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        /* Player Styles */
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.1);
+            height: 4px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #4ADEE4 0%, #3B82F6 100%);
+            height: 100%;
+            border-radius: 2px;
+            transition: width 0.1s linear;
+        }
+
+        .player-control {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .player-control:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* Leaderboard Styles */
+        .leaderboard-item {
+            transition: all 0.3s ease;
+        }
+
+        .leaderboard-item:hover {
+            transform: translateX(10px);
+        }
+
+        /* Community Styles */
+        .post-card {
+            transition: all 0.3s ease;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Navigation Styles */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4ADEE4;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .active-page {
+            display: block;
+        }
+
+        .hidden-page {
+            display: none;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="glass-effect fixed w-full z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                    </svg>
+                    <span class="text-2xl font-bold">InsightPod</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <button onclick="showPage('home')" class="nav-link">Home</button>
+                    <button onclick="showPage('player')" class="nav-link">Player</button>
+                    <button onclick="showPage('leaderboard')" class="nav-link">Leaderboard</button>
+                    <button onclick="showPage('community')" class="nav-link">Community</button>
+                    <button class="bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-2 rounded-lg">
+                        Sign In
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page-content pt-24">
+        <div class="container mx-auto px-6">
+            <!-- Hero Section -->
+            <div class="text-center mb-20">
+                <h1 class="text-6xl font-bold mb-6">Discover. Learn. Grow.</h1>
+                <p class="text-xl text-gray-300 mb-12">Your AI-powered podcast journey starts here</p>
+                <button class="bg-gradient-to-r from-cyan-400 to-blue-500 px-12 py-4 rounded-xl text-lg font-semibold">
+                    Start Listening Now
+                </button>
+            </div>
+
+            <!-- Featured Podcasts -->
+            <div class="mb-20">
+                <h2 class="text-3xl font-bold mb-8">Featured Podcasts</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Featured Podcast Cards -->
+                    <div class="glass-effect rounded-xl p-6">
+                        <img src="/api/placeholder/400/200" alt="podcast thumbnail" class="rounded-lg mb-4 w-full">
+                        <h3 class="text-xl font-semibold mb-2">AI Revolution</h3>
+                        <p class="text-gray-300">Exploring the latest in artificial intelligence</p>
+                    </div>
+                    <div class="glass-effect rounded-xl p-6">
+                        <img src="/api/placeholder/400/200" alt="podcast thumbnail" class="rounded-lg mb-4 w-full">
+                        <h3 class="text-xl font-semibold mb-2">Tech Insights</h3>
+                        <p class="text-gray-300">Deep dives into emerging technologies</p>
+                    </div>
+                    <div class="glass-effect rounded-xl p-6">
+                        <img src="/api/placeholder/400/200" alt="podcast thumbnail" class="rounded-lg mb-4 w-full">
+                        <h3 class="text-xl font-semibold mb-2">Future Forward</h3>
+                        <p class="text-gray-300">Predicting tomorrow's innovations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Player Page -->
+    <div id="playerPage" class="page-content hidden pt-24">
+        <div class="container mx-auto px-6">
+            <div class="glass-effect rounded-xl p-8">
+                <!-- Podcast Info -->
+                <div class="flex items-start space-x-8 mb-8">
+                    <img src="/api/placeholder/300/300" alt="podcast cover" class="rounded-xl w-64">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">The Future of AI in Healthcare</h2>
+                        <p class="text-gray-300 mb-4">Episode 42 • AI Revolution Podcast</p>
+                        <div class="flex space-x-4">
+                            <button class="glass-effect px-4 py-2 rounded-lg">
+                                + Add to Playlist
+                            </button>
+                            <button class="glass-effect px-4 py-2 rounded-lg">
+                                Share Episode
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Player Controls -->
+                <div class="space-y-4">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span>24:15</span>
+                        <div class="flex items-center space-x-6">
+                            <button class="player-control">⏮</button>
+                            <button class="player-control">⏯</button>
+                            <button class="player-control">⏭</button>
+                        </div>
+                        <span>54:30</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Episode Notes -->
+            <div class="glass-effect rounded-xl p-8 mt-8">
+                <h3 class="text-2xl font-bold mb-4">Episode Notes</h3>
+                <div class="prose text-gray-300">
+                    <p>In this episode, we explore the revolutionary impact of AI in healthcare...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Page -->
+    <div id="leaderboardPage" class="page-content hidden pt-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-8">Top Listeners This Week</h2>
+            <div class="glass-effect rounded-xl p-8">
+                <!-- Leaderboard Items -->
+                <div class="space-y-6">
+                    <div class="leaderboard-item flex items-center justify-between p-4 glass-effect rounded-lg">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-2xl font-bold text-cyan-400">1</span>
+                            <img src="/api/placeholder/40/40" alt="user avatar" class="rounded-full">
+                            <span class="font-semibold">TechExplorer</span>
+                        </div>
+                        <div class="flex items-center space-x-8">
+                            <span>2,450 Points</span>
+                            <span class="text-cyan-400">+350 This Week</span>
+                        </div>
+                    </div>
+                    <!-- More leaderboard items... -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Community Page -->
+    <div id="communityPage" class="page-content hidden pt-24">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold">Community Discussions</h2>
+                <button class="bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-2 rounded-lg">
+                    New Post
+                </button>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Community Posts -->
+                <div class="post-card glass-effect rounded-xl p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center space-x-4">
+                            <img src="/api/placeholder/40/40" alt="user avatar" class="rounded-full">
+                            <div>
+                                <h3 class="font-semibold">AI Ethics Discussion</h3>
+                                <p class="text-sm text-gray-300">Posted by @TechEthicist</p>
+                            </div>
+                        </div>
+                        <span class="text-sm text-gray-300">2h ago</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Thoughts on today's episode about AI ethics in healthcare?</p>
+                    <div class="flex space-x-4 text-sm text-gray-300">
+                        <button class="flex items-center space-x-2">
+                            <span>💬</span>
+                            <span>24 Comments</span>
+                        </button>
+                        <button class="flex items-center space-x-2">
+                            <span>❤️</span>
+                            <span>156 Likes</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- More community posts... -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId + 'Page').classList.remove('hidden');
+            
+            // Update navigation highlight
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-cyan-400');
+            });
+            event.target.classList.add('text-cyan-400');
+        }
+
+        // Initialize player controls
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBar = document.querySelector('.progress-bar');
+            const progressFill = document.querySelector('.progress-fill');
+
+            progressBar.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const width = rect.width;
+                const percentage = (x / width) * 100;
+                progressFill.style.width = `${percentage}%`;
+            });
+        });
+    </script>
+</body>
+</html>

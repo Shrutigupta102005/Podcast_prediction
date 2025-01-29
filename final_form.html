@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            padding: 2rem;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .subfields {
+            display: none;
+            margin-top: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .subfields.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .subfields ul li {
+            display: flex;
+            align-items: center;
+        }
+
+        .subfields ul li input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Explore Your Interests</h1>
+        <div class="grid">
+            <div class="card" onclick="toggleSubfields('financeSubfields')">
+                <h2>Finance</h2>
+                <div id="financeSubfields" class="subfields">
+                    <ul class="list-disc pl-5">
+                        <li><input type="checkbox">Behavioural</li>
+                        <li><input type="checkbox">Personal Finance</li>
+                        <li><input type="checkbox">Investment Stack</li>
+                        <li><input type="checkbox">Crypto</li>
+                        <li><input type="checkbox">Finance for Teens</li>
+                        <li><input type="checkbox">Wealth Creator</li>
+                        <li><input type="checkbox">Economics</li>
+                        <li><input type="checkbox">Scan Awareness</li>
+                        <li><input type="checkbox">Stock Analysis</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" onclick="toggleSubfields('healthcareSubfields')">
+                <h2>Healthcare</h2>
+                <div id="healthcareSubfields" class="subfields">
+                    <ul class="list-disc pl-5">
+                        <li><input type="checkbox">Mental Health</li>
+                        <li><input type="checkbox">Fitness</li>
+                        <li><input type="checkbox">Nutrition</li>
+                        <li><input type="checkbox">Public Health</li>
+                        <li><input type="checkbox">Medical Research</li>
+                        <li><input type="checkbox">Telemedicine</li>
+                        <li><input type="checkbox">Technologies</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" onclick="toggleSubfields('entertainmentSubfields')">
+                <h2>Entertainment</h2>
+                <div id="entertainmentSubfields" class="subfields">
+                    <ul class="list-disc pl-5">
+                        <li><input type="checkbox">Movies</li>
+                        <li><input type="checkbox">Music</li>
+                        <li><input type="checkbox">Gaming</li>
+                        <li><input type="checkbox">Theater</li>
+                        <li><input type="checkbox">Celebrity News</li>
+                        <li><input type="checkbox">Streaming </li>
+                        <li><input type="checkbox">Events</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" onclick="toggleSubfields('scienceSubfields')">
+                <h2>Science</h2>
+                <div id="scienceSubfields" class="subfields">
+                    <ul class="list-disc pl-5">
+                        <li><input type="checkbox">Physics</li>
+                        <li><input type="checkbox">Biology</li>
+                        <li><input type="checkbox">Chemistry</li>
+                        <li><input type="checkbox">Space Exploration</li>
+                        <li><input type="checkbox">AI</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class="card" onclick="toggleSubfields('historySubfields')">
+                <h2>History</h2>
+                <div id="historySubfields" class="subfields">
+                    <ul class="list-disc pl-5">
+                        <li><input type="checkbox">Medieval History</li>
+                        <li><input type="checkbox">Modern History</li>
+                        <li><input type="checkbox">World Wars</li>
+                        <li><input type="checkbox">Archaeology</li>
+                        <li><input type="checkbox">Cultural History</li>
+                        <li><input type="checkbox">Ancient Civilizations</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="card" onclick="toggleSubfields('technologySubfields')">
+                <h2>Technology</h2>
+                <div id="technologySubfields" class="subfields">
+                    <ul class="list-disc pl-5">
+                        <li><input type="checkbox">Web Development</li>
+                        <li><input type="checkbox">Mobile Apps</li>
+                        <li><input type="checkbox">Data Science</li>
+                        <li><input type="checkbox">Cybersecurity</li>
+                        <li><input type="checkbox">Blockchain</li>
+                        <li><input type="checkbox">Cloud Computing</li>
+                        <li><input type="checkbox">DevOps</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSubfields(id) {
+            const subfields = document.getElementById(id);
+            if (subfields.classList.contains('active')) {
+                subfields.classList.remove('active');
+            } else {
+                document.querySelectorAll('.subfields').forEach(el => el.classList.remove('active'));
+                subfields.classList.add('active');
+            }
+        }
+
+        
+    </script>
+</body>
+</html>
